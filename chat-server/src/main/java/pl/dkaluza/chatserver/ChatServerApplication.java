@@ -1,4 +1,4 @@
-package pl.dkaluza.chat_server;
+package pl.dkaluza.chatserver;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
