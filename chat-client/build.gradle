@@ -1,5 +1,5 @@
 plugins {
-    id 'java'
+    id 'application'
 }
 
 group = 'pl.dkaluza'
@@ -12,6 +12,14 @@ repositories {
 dependencies {
     testImplementation platform('org.junit:junit-bom:5.10.0')
     testImplementation 'org.junit.jupiter:junit-jupiter'
+}
+
+application {
+    mainClass = 'pl.dkaluza.chatclient.Application'
+}
+
+run {
+    standardInput = System.in
 }
 
 test {
