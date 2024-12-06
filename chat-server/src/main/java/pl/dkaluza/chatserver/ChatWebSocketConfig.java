@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.reactive.HandlerMapping;
 import org.springframework.web.reactive.handler.SimpleUrlHandlerMapping;
 import org.springframework.web.reactive.socket.WebSocketHandler;
+import org.springframework.web.reactive.socket.server.support.WebSocketHandlerAdapter;
 
 import java.util.HashMap;
 
@@ -15,5 +16,10 @@ public class ChatWebSocketConfig {
         var map = new HashMap<String, WebSocketHandler>();
         map.put("/chat", new ChatWebSocketHandler());
         return new SimpleUrlHandlerMapping(map, -1);
+    }
+
+    @Bean
+    public WebSocketHandlerAdapter webSocketHandlerAdapter() {
+        return new WebSocketHandlerAdapter(new ChatWebSocketService());
     }
 }
