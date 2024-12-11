@@ -8,7 +8,7 @@ Clients can connect to the server and send messages. Each message sent to the se
 
 Open chat-server dir and run `./gradlew bootRun` to open the server.
 
-Open chat-server dir and run `./gradlew run` to open the client.
+Open chat-client dir and run `./gradlew run` to open the client.
 
 You can open multiple clients. 
 
