@@ -12,9 +12,9 @@ import java.util.HashMap;
 @Configuration
 public class ChatWebSocketConfig {
     @Bean
-    public HandlerMapping handlerMapping() {
+    public HandlerMapping handlerMapping(ChatWebSocketHandler handler) {
         var map = new HashMap<String, WebSocketHandler>();
-        map.put("/chat", new ChatWebSocketHandler());
+        map.put("/chat", handler);
         return new SimpleUrlHandlerMapping(map, -1);
     }
 
