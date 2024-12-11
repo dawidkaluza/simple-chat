@@ -13,13 +13,12 @@ public class Application {
             var wsFuture = client.newWebSocketBuilder()
                 .buildAsync(URI.create("ws://localhost:8080/chat"), new MyWebSocketListener());
             var ws = wsFuture.get();
-            System.out.println("WebSocket object acquired.");
+            System.out.println("Connection established!");
 
             while (true) {
                 var reader = new BufferedReader(new InputStreamReader(System.in));
                 var message = reader.readLine();
                 ws.sendText(message, true);
-                System.out.println("Sent a message: " + message);
             }
         }
     }
