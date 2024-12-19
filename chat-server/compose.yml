@@ -1,0 +1,14 @@
+services:
+  mongo:
+    image: mongo:8.0.3
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: developer
+      MONGO_INITDB_ROOT_PASSWORD: developer
+    restart: "always"
+    volumes:
+      - mongo-data:/data/db
+    ports:
+      - "27017:27017"
+
+volumes:
+  mongo-data: {}
