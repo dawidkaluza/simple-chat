@@ -1,8 +1,8 @@
 package pl.dkaluza.chatserver.ports.out;
 
-import org.reactivestreams.Publisher;
 import pl.dkaluza.chatserver.domain.Message;
+import reactor.core.publisher.Flux;
 
 public interface MessageRepository {
-    Publisher<Message> insert(Publisher<Message> message);
+    Flux<Message> insert(Flux<Message> message);
 }

@@ -1,22 +1,21 @@
 package pl.dkaluza.chatserver.domain;
 
-import org.reactivestreams.Publisher;
 import pl.dkaluza.chatserver.ports.in.SendMessageUseCase;
-import pl.dkaluza.chatserver.ports.out.MessageSender;
 import pl.dkaluza.chatserver.ports.out.MessageRepository;
+import reactor.core.publisher.Flux;
 
 class MessageService implements SendMessageUseCase {
     private final MessageRepository messageRepository;
-    private final MessageSender messageSender;
+    private final MessageBroker messageBroker;
 
-    public MessageService(MessageRepository messageRepository, MessageSender messageSender) {
+    public MessageService(MessageRepository messageRepository, MessageBroker messageBroker) {
         this.messageRepository = messageRepository;
-        this.messageSender = messageSender;
+        this.messageBroker = messageBroker;
     }
 
     @Override
-    public void sendMessage(Publisher<Message> message) {
+    public void sendMessage(Flux<Message> message) {
         var savedMessage = messageRepository.insert(message);
-        messageSender.send(savedMessage);
+        messageBroker.send(savedMessage);
     }
 }

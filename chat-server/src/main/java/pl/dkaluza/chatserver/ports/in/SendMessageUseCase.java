@@ -1,8 +1,8 @@
 package pl.dkaluza.chatserver.ports.in;
 
-import org.reactivestreams.Publisher;
 import pl.dkaluza.chatserver.domain.Message;
+import reactor.core.publisher.Flux;
 
 public interface SendMessageUseCase {
-    void sendMessage(Publisher<Message> message);
+    void sendMessage(Flux<Message> message);
 }
